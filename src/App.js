@@ -1,25 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import ErrorBoundary from './Components/ErrorBoundary';
+import Header from './Components/Header';
+import Navigation from './Components/Navigation';
+import Footer from './Components/Footer';
+import Table from './Components/Table';
+import React from 'react';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ErrorBoundary>
+        <Header logo={ logo } titre="Mon Titre" slogan="Mon Slogan" />
+        <Navigation />
+        <h1>Ma page d'accueil</h1>
+        <Table />
+        <Footer mentions='ml.html' />
+      </ErrorBoundary>
     </div>
   );
 }
 
 export default App;
+//création d'un "contexte";
+export const ThemeContext = React.createContext({color: 'light', background: 'dark'});
